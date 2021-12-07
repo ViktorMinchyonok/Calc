@@ -2,9 +2,9 @@ D:\3к\техн пр\Calculator\Calculator\bin\Debug\Calculator.exe.config
 D:\3к\техн пр\Calculator\Calculator\bin\Debug\Calculator.exe
 D:\3к\техн пр\Calculator\Calculator\bin\Debug\Calculator.pdb
 D:\3к\техн пр\Calculator\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
-D:\3к\техн пр\Calculator\Calculator\obj\Debug\Calculator.Calc.resources
 D:\3к\техн пр\Calculator\Calculator\obj\Debug\Calculator.Properties.Resources.resources
 D:\3к\техн пр\Calculator\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
 D:\3к\техн пр\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
 D:\3к\техн пр\Calculator\Calculator\obj\Debug\Calculator.exe
 D:\3к\техн пр\Calculator\Calculator\obj\Debug\Calculator.pdb
+D:\3к\техн пр\Calculator\Calculator\obj\Debug\Calculator.Form1.resources
