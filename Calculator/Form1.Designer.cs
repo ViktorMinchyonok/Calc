@@ -49,6 +49,7 @@ namespace Calculator
             this.button_double = new System.Windows.Forms.Button();
             this.button_plus = new System.Windows.Forms.Button();
             this.textbox = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button_reset
@@ -206,6 +207,7 @@ namespace Calculator
             this.button_back.TabIndex = 12;
             this.button_back.Text = "←";
             this.button_back.UseVisualStyleBackColor = false;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
             // button_minus
             // 
@@ -288,11 +290,19 @@ namespace Calculator
             this.textbox.Size = new System.Drawing.Size(311, 75);
             this.textbox.TabIndex = 19;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(13, 95);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(311, 22);
+            this.textBox2.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 599);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textbox);
             this.Controls.Add(this.button_plus);
             this.Controls.Add(this.button_double);
@@ -314,7 +324,11 @@ namespace Calculator
             this.Controls.Add(this.button_7);
             this.Controls.Add(this.button_reset);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,6 +356,7 @@ namespace Calculator
         private System.Windows.Forms.Button button_double;
         private System.Windows.Forms.Button button_plus;
         private System.Windows.Forms.TextBox textbox;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

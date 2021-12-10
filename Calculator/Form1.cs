@@ -16,5 +16,94 @@ namespace Calculator
         {
             InitializeComponent();
         }
+        private bool isClickMouse = false;
+        private Point currentPosition = new Point(0, 0);
+            private void button_back_Click(object sender, EventArgs e)
+        {
+            int lenght = textbox.Text.Length - 1;
+            string text = textbox.Text;
+            textbox.Clear();
+            for (int i = 0; i < lenght; i++)
+            {
+                textbox.Text = textbox.Text + text[i];
+            }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            isClickMouse = false; 
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!isClickMouse) 
+            {
+                return;
+            }
+            Point buf = new Point(this.Location.X, this.Location.Y);
+            buf.X += e.X - currentPosition.X;
+            buf.Y += e.Y - currentPosition.Y;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            isClickMouse = true;
+            currentPosition = new Point(e.X, e.Y);
+        }
+        private bool isPoint = false;
+        private bool isNum2 = false;
+        private string num1 = null;
+        private string num2 = null;
+        private string CurrentOperation = "";
+        private void AddNum(string txt) 
+        {
+            if (isNum2) 
+            {
+                num2 += txt;
+                textBox2.Text = num2;
+            }
+            else 
+            {
+                num1 += txt;
+                textBox2.Text = num1;
+            }
+        }
+        private void SetNum(string txt)
+        {
+            if (isNum2)
+            {
+                num2 = txt;
+                textBox2.Text = num2;
+            }
+            else
+            {
+                num1 = txt;
+                textBox2.Text = num1;
+            }
+        }
+        private void buttonNumberClick(object obj, EventArgs e) 
+        {
+            var txt = ((Button)obj).Text;
+            {
+                if(isPoint && txt == ",") { return;}
+                if(txt == ",") { isPoint = true; }
+            }
+        if (txt == "+/-")
+            {
+                if(textBox2.Text.Length > 0)
+                    if(textBox2.Text[0] == '-')
+                    {
+                        textBox2.Text = textBox2.Text.Substring(1, textBox2.Text.Length - 1);
+                    }
+                else
+                    {
+                        textBox2.Text = "-" + textBox2.Text;
+                        
+                    }
+                SetNum(textBox2.Text);
+                return;
+            }
+            AddNum(txt);
+        }
     }
 }
