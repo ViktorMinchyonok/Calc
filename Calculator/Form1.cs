@@ -18,8 +18,9 @@ namespace Calculator
         }
         private bool isClickMouse = false;
         private Point currentPosition = new Point(0, 0);
-            private void button_back_Click(object sender, EventArgs e)
+        private void button_back_Click(object sender, EventArgs e)
         {
+            if (textbox.Text.Length <= 0) return;
             int lenght = textbox.Text.Length - 1;
             string text = textbox.Text;
             textbox.Clear();
@@ -31,12 +32,12 @@ namespace Calculator
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-            isClickMouse = false; 
+            isClickMouse = false;
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!isClickMouse) 
+            if (!isClickMouse)
             {
                 return;
             }
@@ -55,14 +56,14 @@ namespace Calculator
         private string num1 = null;
         private string num2 = null;
         private string CurrentOperation = "";
-        private void AddNum(string txt) 
+        private void AddNum(string txt)
         {
-            if (isNum2) 
+            if (isNum2)
             {
                 num2 += txt;
                 textBox2.Text = num2;
             }
-            else 
+            else
             {
                 num1 += txt;
                 textBox2.Text = num1;
@@ -81,29 +82,115 @@ namespace Calculator
                 textBox2.Text = num1;
             }
         }
-        private void buttonNumberClick(object obj, EventArgs e) 
+        private void buttonNumberClick(object obj, EventArgs e)
         {
             var txt = ((Button)obj).Text;
             {
-                if(isPoint && txt == ",") { return;}
-                if(txt == ",") { isPoint = true; }
+                if (isPoint && txt == ",") { return; }
+                if (txt == ",") { isPoint = true; }
             }
-        if (txt == "+/-")
+            if (txt == "+/-")
             {
-                if(textBox2.Text.Length > 0)
-                    if(textBox2.Text[0] == '-')
+                if (textBox2.Text.Length > 0)
+                    if (textBox2.Text[0] == '-')
                     {
                         textBox2.Text = textBox2.Text.Substring(1, textBox2.Text.Length - 1);
                     }
-                else
+                    else
                     {
                         textBox2.Text = "-" + textBox2.Text;
-                        
+
                     }
                 SetNum(textBox2.Text);
                 return;
             }
             AddNum(txt);
+        }
+        private void buttonOperationClick(object obj, EventArgs e)
+        {
+            if (num1 == null)
+            {
+                if (textBox2.Text.Length > 0)
+                {
+                    num1 = textBox2.Text;
+                }
+                else 
+                {
+                    return;
+                }
+
+            }
+            isNum2 = true;
+            CurrentOperation = ((Button)obj).Text;
+            SetResult(CurrentOperation);
+        }
+        private void SetResult(string operation)
+        {
+            string result = null;
+            switch(operation)
+            {
+                case "+": { result = Operations.Add(num1, num2); break; }
+                case "-": { result = Operations.Sub(num1, num2); break; }
+                case "×": { result = Operations.Multiply(num1, num2); break; }
+                case "÷": { result = Operations.Divide(num1, num2); break; }
+                case "%": { result = Operations.PDivide(num1, num2); break; }
+                default:break;
+            }
+            OutputResult(result, operation);
+            if (isNum2) 
+            {
+                if (result != null) num1 = result; 
+            
+            }
+            else { num1 = null; }
+            isPoint = false;
+        }
+        private void OutputResult(string result, string operation) 
+        {
+            switch (operation)
+            {
+                default:
+                    {
+
+                        if (num2 != null)
+                        {
+                            textbox.Text = num1 + operation + num2 + "=";
+
+                        }
+                        else
+                        {
+                            if (num1 != null)
+                            {
+                                textbox.Text = num1 + operation;
+                                break;
+                            }
+
+                        }
+                    }
+                    break;
+            }
+            num2 = null;
+            if (result != null)
+                textBox2.Text = result;
+        }
+
+        private void button_reset_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = "";
+            textbox.Text = "";
+            isNum2 = false;
+            num1 = null;
+            num2 = null;
+            isPoint = false;
+        }
+
+        private void button_equals_Click(object sender, EventArgs e)
+        {
+            SetResult(CurrentOperation);
+            isNum2 = false;
+            num1 = null;
+            num2 = null;
+
         }
     }
 }
