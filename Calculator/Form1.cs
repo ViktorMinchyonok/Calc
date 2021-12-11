@@ -62,11 +62,13 @@ namespace Calculator
             {
                 num2 += txt;
                 textBox2.Text = num2;
+                textbox.Text += num2;
             }
             else
             {
                 num1 += txt;
                 textBox2.Text = num1;
+                textbox.Text = num1;
             }
         }
         private void SetNum(string txt)
@@ -95,11 +97,12 @@ namespace Calculator
                     if (textBox2.Text[0] == '-')
                     {
                         textBox2.Text = textBox2.Text.Substring(1, textBox2.Text.Length - 1);
+                        textbox.Text = textbox.Text.Substring(1, textbox.Text.Length - 1);
                     }
                     else
                     {
                         textBox2.Text = "-" + textBox2.Text;
-
+                        textbox.Text = "-" + textbox.Text;
                     }
                 SetNum(textBox2.Text);
                 return;
@@ -145,33 +148,31 @@ namespace Calculator
             else { num1 = null; }
             isPoint = false;
         }
-        private void OutputResult(string result, string operation) 
+        private void OutputResult(string result, string operation)
         {
-            switch (operation)
+
+            if (num2 != null)
             {
-                default:
-                    {
+                textbox.Text = num1 + operation + num2 + "=";
 
-                        if (num2 != null)
-                        {
-                            textbox.Text = num1 + operation + num2 + "=";
-
-                        }
-                        else
-                        {
-                            if (num1 != null)
-                            {
-                                textbox.Text = num1 + operation;
-                                break;
-                            }
-
-                        }
-                    }
-                    break;
             }
+            else
+            {
+                if (num1 != null)
+                {
+                    textbox.Text = num1 + operation;
+
+                }
+
+            }
+
+
+
             num2 = null;
             if (result != null)
+            {
                 textBox2.Text = result;
+            }
         }
 
         private void button_reset_Click(object sender, EventArgs e)

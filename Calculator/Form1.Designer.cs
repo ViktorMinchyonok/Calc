@@ -50,6 +50,7 @@ namespace Calculator
             this.button_plus = new System.Windows.Forms.Button();
             this.textbox = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_reset
@@ -239,9 +240,9 @@ namespace Calculator
             this.button_equals.BackColor = System.Drawing.SystemColors.Highlight;
             this.button_equals.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_equals.ForeColor = System.Drawing.SystemColors.Control;
-            this.button_equals.Location = new System.Drawing.Point(250, 433);
+            this.button_equals.Location = new System.Drawing.Point(250, 515);
             this.button_equals.Name = "button_equals";
-            this.button_equals.Size = new System.Drawing.Size(82, 164);
+            this.button_equals.Size = new System.Drawing.Size(82, 82);
             this.button_equals.TabIndex = 14;
             this.button_equals.Text = "=";
             this.button_equals.UseVisualStyleBackColor = false;
@@ -315,11 +316,25 @@ namespace Calculator
             this.textBox2.Size = new System.Drawing.Size(311, 22);
             this.textBox2.TabIndex = 20;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(250, 433);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 82);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "+/-";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.buttonNumberClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 599);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textbox);
             this.Controls.Add(this.button_plus);
@@ -375,6 +390,7 @@ namespace Calculator
         private System.Windows.Forms.Button button_plus;
         private System.Windows.Forms.TextBox textbox;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
