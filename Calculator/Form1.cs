@@ -18,17 +18,7 @@ namespace Calculator
         }
         private bool isClickMouse = false;
         private Point currentPosition = new Point(0, 0);
-        private void button_back_Click(object sender, EventArgs e)
-        {
-            if (textbox.Text.Length <= 0) return;
-            int lenght = textbox.Text.Length - 1;
-            string text = textbox.Text;
-            textbox.Clear();
-            for (int i = 0; i < lenght; i++)
-            {
-                textbox.Text = textbox.Text + text[i];
-            }
-        }
+        double MemoryStore = 0;
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -55,6 +45,8 @@ namespace Calculator
         private bool isNum2 = false;
         private string num1 = null;
         private string num2 = null;
+        string result = null;
+
         private string CurrentOperation = "";
         private void AddNum(string txt)
         {
@@ -102,7 +94,10 @@ namespace Calculator
                     else
                     {
                         textBox2.Text = "-" + textBox2.Text;
-                        textbox.Text = "-" + textbox.Text;
+                       if(textbox.Text!=num1)
+                        textbox.Text = num1 + CurrentOperation + "-" + num2;
+                       else textbox.Text = "-" + textbox.Text;
+
                     }
                 SetNum(textBox2.Text);
                 return;
@@ -129,7 +124,7 @@ namespace Calculator
         }
         private void SetResult(string operation)
         {
-            string result = null;
+            result = null;
             switch(operation)
             {
                 case "+": { result = Operations.Add(num1, num2); break; }
@@ -171,6 +166,7 @@ namespace Calculator
             num2 = null;
             if (result != null)
             {
+                textbox.Text += result;
                 textBox2.Text = result;
             }
         }
@@ -187,11 +183,47 @@ namespace Calculator
 
         private void button_equals_Click(object sender, EventArgs e)
         {
+           
             SetResult(CurrentOperation);
             isNum2 = false;
             num1 = null;
             num2 = null;
 
+        }
+        private void button_back_Click(object sender, EventArgs e)
+        {
+            if (textbox.Text.Length <= 0) return;
+            textbox.Text = textbox.Text.Substring(0,textbox.Text.Length-1);
+            SetNum(textbox.Text);
+        }
+
+        private void mc_button_Click(object sender, EventArgs e)
+        {
+            MemoryStore = 0;
+            return;
+        }
+        private void mrecall_button_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = MemoryStore.ToString();
+            return;
+        }
+
+        private void msubtract_button_Click(object sender, EventArgs e)
+        {
+                MemoryStore = Double.Parse(textBox2.Text);
+            return;
+        }
+
+        private void mminus_button_Click(object sender, EventArgs e)
+        {
+            MemoryStore -= Double.Parse(textBox2.Text);
+            return;
+        }
+
+        private void mplus_button_Click(object sender, EventArgs e)
+        {
+            MemoryStore += Double.Parse(textBox2.Text);
+            return;
         }
     }
 }

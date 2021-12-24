@@ -51,6 +51,11 @@ namespace Calculator
             this.textbox = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.mc_button = new System.Windows.Forms.Button();
+            this.mplus_button = new System.Windows.Forms.Button();
+            this.mminus_button = new System.Windows.Forms.Button();
+            this.mrecall_button = new System.Windows.Forms.Button();
+            this.msubtract_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_reset
@@ -58,7 +63,7 @@ namespace Calculator
             this.button_reset.BackColor = System.Drawing.SystemColors.Menu;
             this.button_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_reset.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button_reset.Location = new System.Drawing.Point(5, 190);
+            this.button_reset.Location = new System.Drawing.Point(4, 190);
             this.button_reset.Name = "button_reset";
             this.button_reset.Size = new System.Drawing.Size(82, 82);
             this.button_reset.TabIndex = 0;
@@ -71,7 +76,7 @@ namespace Calculator
             this.button_7.BackColor = System.Drawing.SystemColors.HighlightText;
             this.button_7.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_7.Location = new System.Drawing.Point(5, 271);
+            this.button_7.Location = new System.Drawing.Point(4, 271);
             this.button_7.Name = "button_7";
             this.button_7.Size = new System.Drawing.Size(82, 82);
             this.button_7.TabIndex = 1;
@@ -84,7 +89,7 @@ namespace Calculator
             this.button_4.BackColor = System.Drawing.SystemColors.HighlightText;
             this.button_4.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_4.Location = new System.Drawing.Point(5, 352);
+            this.button_4.Location = new System.Drawing.Point(4, 352);
             this.button_4.Name = "button_4";
             this.button_4.Size = new System.Drawing.Size(82, 82);
             this.button_4.TabIndex = 2;
@@ -97,7 +102,7 @@ namespace Calculator
             this.button_1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.button_1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_1.Location = new System.Drawing.Point(5, 433);
+            this.button_1.Location = new System.Drawing.Point(4, 433);
             this.button_1.Name = "button_1";
             this.button_1.Size = new System.Drawing.Size(82, 82);
             this.button_1.TabIndex = 3;
@@ -253,7 +258,7 @@ namespace Calculator
             this.button_pdivide.BackColor = System.Drawing.SystemColors.HighlightText;
             this.button_pdivide.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button_pdivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_pdivide.Location = new System.Drawing.Point(5, 515);
+            this.button_pdivide.Location = new System.Drawing.Point(4, 515);
             this.button_pdivide.Name = "button_pdivide";
             this.button_pdivide.Size = new System.Drawing.Size(82, 82);
             this.button_pdivide.TabIndex = 15;
@@ -306,14 +311,15 @@ namespace Calculator
             this.textbox.Location = new System.Drawing.Point(13, 13);
             this.textbox.Multiline = true;
             this.textbox.Name = "textbox";
-            this.textbox.Size = new System.Drawing.Size(311, 75);
+            this.textbox.Size = new System.Drawing.Size(394, 75);
             this.textbox.TabIndex = 19;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(13, 95);
+            this.textBox2.Location = new System.Drawing.Point(12, 94);
+            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(311, 22);
+            this.textBox2.Size = new System.Drawing.Size(395, 75);
             this.textBox2.TabIndex = 20;
             // 
             // button1
@@ -329,11 +335,81 @@ namespace Calculator
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.buttonNumberClick);
             // 
+            // mc_button
+            // 
+            this.mc_button.BackColor = System.Drawing.SystemColors.Menu;
+            this.mc_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mc_button.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.mc_button.Location = new System.Drawing.Point(332, 190);
+            this.mc_button.Name = "mc_button";
+            this.mc_button.Size = new System.Drawing.Size(82, 82);
+            this.mc_button.TabIndex = 22;
+            this.mc_button.Text = "mc";
+            this.mc_button.UseVisualStyleBackColor = false;
+            this.mc_button.Click += new System.EventHandler(this.mc_button_Click);
+            // 
+            // mplus_button
+            // 
+            this.mplus_button.BackColor = System.Drawing.SystemColors.Menu;
+            this.mplus_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mplus_button.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.mplus_button.Location = new System.Drawing.Point(332, 271);
+            this.mplus_button.Name = "mplus_button";
+            this.mplus_button.Size = new System.Drawing.Size(82, 82);
+            this.mplus_button.TabIndex = 23;
+            this.mplus_button.Text = "m+";
+            this.mplus_button.UseVisualStyleBackColor = false;
+            this.mplus_button.Click += new System.EventHandler(this.mplus_button_Click);
+            // 
+            // mminus_button
+            // 
+            this.mminus_button.BackColor = System.Drawing.SystemColors.Menu;
+            this.mminus_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mminus_button.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.mminus_button.Location = new System.Drawing.Point(332, 352);
+            this.mminus_button.Name = "mminus_button";
+            this.mminus_button.Size = new System.Drawing.Size(82, 82);
+            this.mminus_button.TabIndex = 24;
+            this.mminus_button.Text = "m-";
+            this.mminus_button.UseVisualStyleBackColor = false;
+            this.mminus_button.Click += new System.EventHandler(this.mminus_button_Click);
+            // 
+            // mrecall_button
+            // 
+            this.mrecall_button.BackColor = System.Drawing.SystemColors.Menu;
+            this.mrecall_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mrecall_button.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.mrecall_button.Location = new System.Drawing.Point(332, 433);
+            this.mrecall_button.Name = "mrecall_button";
+            this.mrecall_button.Size = new System.Drawing.Size(82, 82);
+            this.mrecall_button.TabIndex = 25;
+            this.mrecall_button.Text = "mr";
+            this.mrecall_button.UseVisualStyleBackColor = false;
+            this.mrecall_button.Click += new System.EventHandler(this.mrecall_button_Click);
+            // 
+            // msubtract_button
+            // 
+            this.msubtract_button.BackColor = System.Drawing.SystemColors.Menu;
+            this.msubtract_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.msubtract_button.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.msubtract_button.Location = new System.Drawing.Point(332, 515);
+            this.msubtract_button.Name = "msubtract_button";
+            this.msubtract_button.Size = new System.Drawing.Size(82, 82);
+            this.msubtract_button.TabIndex = 26;
+            this.msubtract_button.Text = "ms";
+            this.msubtract_button.UseVisualStyleBackColor = false;
+            this.msubtract_button.Click += new System.EventHandler(this.msubtract_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 599);
+            this.ClientSize = new System.Drawing.Size(419, 599);
+            this.Controls.Add(this.msubtract_button);
+            this.Controls.Add(this.mrecall_button);
+            this.Controls.Add(this.mminus_button);
+            this.Controls.Add(this.mplus_button);
+            this.Controls.Add(this.mc_button);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textbox);
@@ -391,6 +467,11 @@ namespace Calculator
         private System.Windows.Forms.TextBox textbox;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button mc_button;
+        private System.Windows.Forms.Button mplus_button;
+        private System.Windows.Forms.Button mminus_button;
+        private System.Windows.Forms.Button mrecall_button;
+        private System.Windows.Forms.Button msubtract_button;
     }
 }
 
