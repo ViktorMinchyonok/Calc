@@ -19,7 +19,6 @@ namespace Calculator
         private bool isClickMouse = false;
         private Point currentPosition = new Point(0, 0);
         double MemoryStore = 0;
-        public bool tm = false;
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             isClickMouse = false;
@@ -93,6 +92,7 @@ namespace Calculator
                     }
                     else
                     {
+                        if (Equals(textBox2.Text, "0")) return;
                         textBox2.Text = "-" + textBox2.Text;
                         if (textbox.Text != num1)
                             textbox.Text = num1 + CurrentOperation + "-" + num2;
@@ -159,7 +159,21 @@ namespace Calculator
 
             if (num2 != null)
             {
-                textbox.Text = num1 + operation + num2 + "=";
+                if (Equals(operation, "cos") || Equals(operation, "sin") || Equals(operation, "x!") || Equals(operation, "√") || Equals(operation, "√") || Equals(operation, "ln") || Equals(operation, "1/x") || Equals(operation, "e") || Equals(operation, "x^2"))
+                {
+                    textBox2.Text = "";
+                    textbox.Text = "";
+                    isNum2 = false;
+                    num1 = null;
+                    num2 = null;
+                    result = null;
+                    isPoint = false;
+                }
+                else
+                {
+                    textbox.Text = num1 + operation + num2 + "=";
+                } 
+                
                 
                 
             }
@@ -247,22 +261,29 @@ namespace Calculator
 
         private void mminus_button_Click(object sender, EventArgs e)
         {
-            MemoryStore -= Double.Parse(textBox2.Text);
+            try { MemoryStore -= Double.Parse(textBox2.Text); ; }
+
+            catch
+            {
+                DialogResult result = MessageBox.Show("Нет введенного значения", "Ошибка", MessageBoxButtons.OK);
+                if (result == DialogResult.OK) return;
+            }
+            
             return;
         }
 
         private void mplus_button_Click(object sender, EventArgs e)
         {
-            MemoryStore += Double.Parse(textBox2.Text);
+            try { MemoryStore += Double.Parse(textBox2.Text); ; }
+
+            catch
+            {
+                DialogResult result = MessageBox.Show("Нет введенного значения", "Ошибка", MessageBoxButtons.OK);
+                if (result == DialogResult.OK) return;
+            }
+
             return;
         }
-        private void bSvoistva_Click(object sender, EventArgs e)
-        {
-            tm = !tm;
-        }
-        private void Anim_Tick(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

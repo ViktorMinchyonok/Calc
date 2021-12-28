@@ -54,7 +54,7 @@ namespace Calculator
         {
             int a,  Factorial=1;
             double b;
-            if ((!Double.TryParse(num1, out b))||(!Int32.TryParse(num1, out a))) { return "Ошибка"; }
+            if (!Int32.TryParse(num1, out a)) { return "Ошибка"; }
             for (int i = 1; i < a+1; i++)
             { Factorial *= i; }
             return Factorial.ToString();
@@ -76,7 +76,7 @@ namespace Calculator
         {
             double a;
             if (!Double.TryParse(num1, out a)) { return null; }
-            if (a == 0) return "Ошибка";
+            if (a == 0) return "∞";
             return (1/a).ToString();
         }
         public static string Exp(string num1)
